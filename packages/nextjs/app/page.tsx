@@ -1,70 +1,61 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
+import HomeHeader from "~~/components/HomeHeader";
+import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-
   return (
-    <>
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} />
+    <main className="bg-[#221e29]">
+      <MetaHeader />
+      <HomeHeader />
+      <section>
+        <div className="container mx-auto my-24 flex flex-wrap px-8 md:px-0">
+          <div className="w-full md:w-3/5 md:text-left text-center mb-12 md:mb-2">
+            <p className="md:text-2xl uppercase font-bold mb-4 md:capitalize md:font-normal">The future of NFT</p>
+            <h1 className="md:text-5xl text-4xl leading-[1.5] md:leading-[1.5] font-[600] gradient-text">
+              <span className="default-text">The Web3 Wallet That is </span>User- Friendly and Secure{" "}
+              <span className="default-text">for Effortless Self-Custody</span>
+            </h1>
+            <Link href="/dashboard" className="rainbow-btn">
+              <span>Go to app</span>
+            </Link>
           </div>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
+          <div className="w-full md:w-2/5 ">
+            <div className="w-full transform md:scale-110 scale-90 flex items-center justify-center">
+              <Image src={"/assets/hero-image.png"} width={415} height={427} alt="hero-image"></Image>
+            </div>
+          </div>
         </div>
+        <div className="text-center text-xl">
+          <p className="inline border-l border-r px-16 py-4">Built on Account Abstraction</p>
+        </div>
+      </section>
+      <section
+        className="bg-contain bg-bottom mt-16 pb-16 pt-10"
+        style={{
+          background: `url("/assets/bg1.png")`,
+          backgroundPositionY: "bottom",
+          backgroundSize: "contain",
+          backgroundPositionX: "center",
+        }}
+      >
+        <div className="container flex flex-col mx-auto py-32 items-center justify-center text-center">
+          <div className="mb-6">
+            <Image src={"/assets/erc.png"} width={136} height={136} alt="erc logo" />
+          </div>
 
-        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
+          <p className="text-4xl md:w-[55%] leading-[1.7] font-[500]">
+            An ERC721 Bound Smart Wallet With Account Abstraction Capabilities
+          </p>
+          <div className="mt-6">
+            <Link href="/dashboard" className="rainbow-btn">
+              <span>Go to app</span>
+            </Link>
           </div>
         </div>
-      </div>
-    </>
+      </section>
+    </main>
   );
 };
 
