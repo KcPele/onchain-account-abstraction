@@ -109,3 +109,19 @@ export const isValidInteger = (dataType: IntegerVariant, value: bigint | string,
 // Treat any dot-separated string as a potential ENS name
 const ensRegex = /.+\..+/;
 export const isENS = (address = "") => ensRegex.test(address);
+
+export enum ROUTE_TYPES {
+  ADD_TX,
+  UPDATE_TX,
+  GET_POOL,
+}
+
+export enum TX_STATUS {
+  IN_QUEUE,
+  COMPLETED,
+}
+
+export enum MAIN_TABS {
+  POOL,
+  HISTORY,
+}
