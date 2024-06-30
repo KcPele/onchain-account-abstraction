@@ -7,7 +7,6 @@ import { useTheme } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import { WagmiProvider } from "wagmi";
 import { Footer } from "~~/components/Footer";
-import { Header } from "~~/components/Header";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
 import { AccountContextProvider } from "~~/context/AccountContext";
@@ -19,14 +18,16 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   useInitializeNativeCurrencyPrice();
 
   return (
-    <>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="relative flex flex-col flex-1">{children}</main>
+    <NBACollectibleProvider>
+      <div className="flex flex-col min-h-screen bg-[#221e29] ">
+        {/*  <Header /> */}
+        <main className="relative flex flex-col flex-1">
+          <AccountContextProvider>{children}</AccountContextProvider>
+        </main>
         <Footer />
       </div>
       <Toaster />
-    </>
+    </NBACollectibleProvider>
   );
 };
 
@@ -55,11 +56,7 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
           avatar={BlockieAvatar}
           theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
         >
-          <ScaffoldEthApp>
-            <NBACollectibleProvider>
-              <AccountContextProvider>{children}</AccountContextProvider>
-            </NBACollectibleProvider>
-          </ScaffoldEthApp>
+          <ScaffoldEthApp>{children}</ScaffoldEthApp>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

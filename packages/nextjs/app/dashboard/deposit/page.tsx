@@ -1,12 +1,14 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import PageHOC from "../../../components/superhack/PageHOC";
 import SelectActiveToken from "../../../components/superhack/SelectActiveToken";
-import { useAccountContext } from "../../../context/AccountContext";
-import { useNBACollectible } from "../../../context/NBAContext";
 import { notification } from "../../../utils/scaffold-eth";
 import { AiOutlineCopy } from "react-icons/ai";
 import QRCode from "react-qr-code";
+import { useAccountContext } from "~~/context/AccountContext";
+import { useNBACollectible } from "~~/context/NBAContext";
 
 const Deposit = () => {
   const { activeTokenMainAccount } = useAccountContext();

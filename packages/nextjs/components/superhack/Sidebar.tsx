@@ -1,12 +1,15 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { BiCalendar, BiSolidDashboard, BiTransfer } from "react-icons/bi";
 import { MdOutlineSavings } from "react-icons/md";
 
 const Sidebar = () => {
   const router = useRouter();
+  const pathName = usePathname();
   const sidebarList = [
     {
       name: "Dashboard",
@@ -50,7 +53,7 @@ const Sidebar = () => {
           <li
             key={index}
             className={`hover:bg-active py-3 mb-2 cursor-pointer flex items-center gap-4 ${
-              router.pathname === item.path ? "bg-active" : ""
+              pathName === item.path ? "bg-active" : ""
             }`}
             onClick={() => router.push(item.path)}
           >

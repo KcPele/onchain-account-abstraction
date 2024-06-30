@@ -76,6 +76,16 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        "super-dark": "#1F1E27",
+        "super-gradient": "linear-gradient(180deg, #ACE019 0%, #D017C9 100%)",
+      },
+      backgroundImage: {
+        active: "linear-gradient(270deg, #2D314D 0%, rgba(45, 49, 77, 0) 106.25%)",
+      },
+      fontFamily: {
+        "bai-jamjuree": ["Bai Jamjuree", "sans-serif"],
+      },
       boxShadow: {
         center: "0 0 12px -2px rgb(0 0 0 / 0.05)",
       },

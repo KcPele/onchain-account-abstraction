@@ -30,3 +30,107 @@ p {
 .btn.btn-ghost {
   @apply shadow-none;
 }
+
+.gradient-text {
+  background: var(--txt-gradient, linear-gradient(180deg, #c4ff04 0%, #f0e 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.default-text {
+  background: var(--txt-gradient, linear-gradient(180deg, #fff 0%, #fff 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pagehoc__container {
+  display: grid;
+
+  min-height: 90vh;
+  grid-template-columns: fit-content(100%) 1fr;
+}
+
+.dashboard__container {
+  container-type: inline-size;
+  container-name: dashboard;
+}
+.dashboard__container-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 30px;
+}
+
+@container dashboard (max-width: 850px) {
+  .dashboard__container-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deposit__container {
+  container-type: inline-size;
+  container-name: deposit;
+}
+.deposit__container-content {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@container deposit (max-width: 900px) {
+  .deposit__container-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Button */
+.rainbow-btn {
+  max-width: 12rem;
+  min-width: 10rem;
+  text-align: center;
+  position: relative;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  display: block;
+  z-index: 2;
+  overflow: hidden;
+  padding: 1px;
+}
+.rainbow-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(115deg, #c4ff04, #c4ff04, #f0e, #f0e, #c4ff04);
+  background-size: 50% 100%;
+}
+.rainbow-btn > span {
+  position: relative;
+  z-index: 2;
+  padding: 0.6rem 0;
+  text-decoration: none;
+  align-items: center;
+  background: #111115;
+  border-radius: 1rem;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+}
+
+.rainbow-btn:focus:before,
+.rainbow-btn:hover:before {
+  animation: rainbow-btn 0.75s linear infinite;
+}
+
+@keyframes rainbow-btn {
+  to {
+    transform: translateX(-50%);
+  }
+}

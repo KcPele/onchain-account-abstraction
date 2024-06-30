@@ -6,7 +6,7 @@ import { MetaHeader } from "~~/components/MetaHeader";
 
 const Home: NextPage = () => {
   return (
-    <main className="bg-[#221e29]">
+    <main className="">
       <MetaHeader />
       <HomeHeader />
       <section>

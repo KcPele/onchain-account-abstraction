@@ -41,7 +41,7 @@ const Mint: NextPage = () => {
   }
 
   return (
-    <main className="bg-[#221e29]">
+    <main className="">
       <MetaHeader />
       <HomeHeader />
       <section

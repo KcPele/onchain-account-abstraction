@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import HomeHeader from "../../components/HomeHeader";
 import { MetaHeader } from "../../components/MetaHeader";
@@ -6,7 +8,7 @@ import type { NextPage } from "next";
 
 const List: NextPage = () => {
   return (
-    <main className="bg-[#221e29]">
+    <main className="">
       <MetaHeader />
       <HomeHeader />
       <section

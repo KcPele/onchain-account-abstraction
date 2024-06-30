@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { PaginationButton, SearchBar, TransactionsTable } from "./_components";
 import type { NextPage } from "next";
 import { hardhat } from "viem/chains";
+import PageHOC from "~~/components/superhack/PageHOC";
 import { useFetchBlocks } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { notification } from "~~/utils/scaffold-eth";
@@ -80,4 +81,4 @@ const BlockExplorer: NextPage = () => {
   );
 };
 
-export default BlockExplorer;
+export default PageHOC(BlockExplorer);

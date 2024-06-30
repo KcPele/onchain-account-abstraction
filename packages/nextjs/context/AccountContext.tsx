@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { useWalletClient } from "wagmi";
