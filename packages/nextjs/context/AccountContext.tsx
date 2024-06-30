@@ -7,6 +7,7 @@ import { useNBACollectible } from "~~/context/NBAContext";
 import { useDeployedContractInfo } from "~~/hooks/scaffold-eth";
 import { NFTData } from "~~/types/nftData";
 import { getMainAccountFromTokenAttribute } from "~~/utils/account/getMainAccountFromTokenAttribute";
+import { config } from "~~/utils/config";
 import { getEthersSigner } from "~~/utils/scaffold-eth/ethersSigner";
 
 export interface IAccountContextType {
@@ -61,7 +62,7 @@ export function AccountContextProvider({ children }: { children: React.ReactNode
     const loadActiveAccountContract = async () => {
       try {
         if (!accountContract || activeTokenMainAccount === ethers.ZeroAddress || !walletClient) return;
-        const signer = await getEthersSigner(walletClient);
+        const signer = await getEthersSigner(config);
         const contract = new ethers.Contract(activeTokenMainAccount, accountContract.abi, signer);
         setActiveAccountContract(contract);
       } catch (e) {

@@ -14,6 +14,7 @@ import { getEthersSigner } from "../../../utils/scaffold-eth/ethersSigner";
 import { ethers } from "ethers";
 import { useWalletClient } from "wagmi";
 import { useBalance } from "wagmi";
+import { config } from "~~/utils/config";
 
 const Transfer = () => {
   const [activeTab, setActiveTab] = useState("sell");
@@ -59,7 +60,7 @@ const Transfer = () => {
     try {
       setIsTxnLoading(true);
       if (!accountContract || activeTokenMainAccount === ethers.ZeroAddress || !walletClient) return;
-      const signer = await getEthersSigner(walletClient);
+      const signer = await getEthersSigner(config);
       const contract = new ethers.Contract(activeTokenMainAccount, accountContract.abi, signer);
       const tx = await contract.execute(destinationAddress, ethers.parseEther(transferAmount), "0x", 0);
       const receipt = await tx.wait();
@@ -78,7 +79,7 @@ const Transfer = () => {
     try {
       setIsTxnLoading(true);
       if (!accountContract || !walletClient) return;
-      const signer = await getEthersSigner(walletClient);
+      const signer = await getEthersSigner(config);
       const erc20Abi = ["function transfer(address to, uint256 value) public returns (bool)"];
       const tokenContract = new ethers.Contract(tokenAddress, erc20Abi, signer);
       const data = tokenContract.interface.encodeFunctionData("transfer", [

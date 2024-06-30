@@ -20,6 +20,7 @@ import { useAccount, useWalletClient } from "wagmi";
 import { useBalance } from "wagmi";
 import { WalletIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import ethLogo from "~~/public/ethereum-eth-logo.svg";
+import { config } from "~~/utils/config";
 import { getEthersSigner } from "~~/utils/scaffold-eth/ethersSigner";
 
 const Dashboard = () => {
@@ -68,7 +69,7 @@ const Dashboard = () => {
   }, [nbaContract, defaultImplementationContract]);
   const loadWallets = async () => {
     if (!accountContract || activeTokenMainAccount === ethers.ZeroAddress || !walletClient) return;
-    const signer = await getEthersSigner(walletClient);
+    const signer = await getEthersSigner(config);
     const contract = new ethers.Contract(activeTokenMainAccount, accountContract.abi, signer);
     setCurrentWalletContract(contract);
   };
