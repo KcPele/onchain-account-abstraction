@@ -55,7 +55,7 @@ const SafeApps = ({ isWC = false }: { isWC: boolean }) => {
   }, [walletClient]);
   //   const { data: signer } = useSigner();
   const chainId = useChainId();
-  const { data, isError, status, isSuccess, signTypedData } = useSignTypedData(
+  const { data, isError, status, isSuccess } = useSignTypedData(
     safeSignedData !== null ? { ...(safeSignedData as any) } : {},
   );
 
@@ -70,7 +70,7 @@ const SafeApps = ({ isWC = false }: { isWC: boolean }) => {
   useEffect(() => {
     if (safeSignedData !== null) {
       console.log(`n-🔴 => useEffect => safeSignedData:`, safeSignedData);
-      signTypedData();
+      // signTypedData();
     }
   }, [safeSignedData]);
 
