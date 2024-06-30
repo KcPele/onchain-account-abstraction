@@ -2,13 +2,9 @@
 
 import React from "react";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import SafeApps from "../../../components/superhack/SafeApps";
 import { useAccountContext } from "../../../context/AccountContext";
-
-// import { useAppStore } from "~~/services/store/store";
-
-// const appUrl = "http://localhost:3001";
 
 const SafeAppsPage = () => {
   const router = useRouter();

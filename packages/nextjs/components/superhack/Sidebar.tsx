@@ -31,11 +31,7 @@ const Sidebar = () => {
     //   icon: <MdOutlineSavings size={24} className="" />,
     //   path: "/dashboard/safe-app",
     // },
-    // {
-    //   name: "Wallet connect",
-    //   icon: <MdOutlineSavings size={24} className="" />,
-    //   path: "/dashboard/wallet-connect",
-    // },
+
     {
       name: "Transactions",
       icon: <BiCalendar size={24} className="" />,
