@@ -5,7 +5,8 @@ import { ethers } from "ethers";
 import { useAccount } from "wagmi";
 import { useDeployedContractInfo, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { NFTData } from "~~/types/nftData";
-import { useEthersProvider } from "~~/utils/scaffold-eth/ethersProvider";
+import { config } from "~~/utils/config";
+import { getEthersProvider } from "~~/utils/scaffold-eth/ethersProvider";
 
 interface INBAContext {
   NBACollectibles: NFTData[];
@@ -18,7 +19,7 @@ export const NBACollectibleProvider: React.FC<{ children: ReactNode }> = ({ chil
   const [isLoading, setIsLoading] = useState(false);
   const [NBACollectibles, setNBACollectibles] = useState<NFTData[]>([]);
   const { address } = useAccount();
-  const provider = useEthersProvider();
+  const provider = getEthersProvider(config);
   const { data: nbaContract } = useDeployedContractInfo("NBA");
   const { data: nftBalance } = useScaffoldReadContract({
     contractName: "NBA",

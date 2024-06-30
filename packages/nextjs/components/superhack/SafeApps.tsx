@@ -20,6 +20,7 @@ import { useAppCommunicator } from "~~/safeAppService";
 // } from "~~/safeAppService/types";
 import { Methods, SignMessageParams, SignTypedMessageParams } from "~~/safeAppService/types";
 import { useAppStore } from "~~/services/store/store";
+import { config } from "~~/utils/config";
 import { notification } from "~~/utils/scaffold-eth";
 // import { useEthersProvider } from "~~/utils/scaffold-eth/ethersProvider";
 import { getEthersSigner } from "~~/utils/scaffold-eth/ethersSigner";
@@ -47,7 +48,7 @@ const SafeApps = ({ isWC = false }: { isWC: boolean }) => {
   useEffect(() => {
     const readySigner = async () => {
       if (!walletClient) return;
-      const _signer = await getEthersSigner(walletClient);
+      const _signer = await getEthersSigner(config);
       // const provider = new ethers.JsonRpcProvider(`${window.ethereum}`);
       // setProvider(provider);
       setSigner(_signer);

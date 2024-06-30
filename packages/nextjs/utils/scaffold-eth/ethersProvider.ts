@@ -1,17 +1,16 @@
-import * as React from "react";
+import { type Config, getClient } from "@wagmi/core";
 import { FallbackProvider, JsonRpcProvider } from "ethers";
-import { type HttpTransport } from "viem";
-import { usePublicClient } from "wagmi";
+import type { Chain, Client, Transport } from "viem";
 
-export function publicClientToProvider(publicClient: any) {
-  const { chain, transport } = publicClient;
+export function clientToProvider(client: Client<Transport, Chain>) {
+  const { chain, transport } = client;
   const network = {
     chainId: chain.id,
     name: chain.name,
     ensAddress: chain.contracts?.ensRegistry?.address,
   };
   if (transport.type === "fallback") {
-    const providers = (transport.transports as ReturnType<HttpTransport>[]).map(
+    const providers = (transport.transports as ReturnType<Transport>[]).map(
       ({ value }) => new JsonRpcProvider(value?.url, network),
     );
     if (providers.length === 1) return providers[0];
@@ -20,8 +19,9 @@ export function publicClientToProvider(publicClient: any) {
   return new JsonRpcProvider(transport.url, network);
 }
 
-/** Hook to convert a viem Public Client to an ethers.js Provider. */
-export function useEthersProvider({ chainId }: { chainId?: number } = {}) {
-  const publicClient = usePublicClient({ chainId });
-  return React.useMemo(() => publicClientToProvider(publicClient), [publicClient]);
+/** Action to convert a viem Client to an ethers.js Provider. */
+export function getEthersProvider(config: Config, { chainId }: { chainId?: number } = {}) {
+  const client = getClient(config, { chainId });
+  if (!client) return;
+  return clientToProvider(client);
 }
