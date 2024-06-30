@@ -13,7 +13,6 @@ import { useDeployedContractInfo } from "../../hooks/scaffold-eth";
 import { useScaffoldWriteContract } from "../../hooks/scaffold-eth";
 import { useAppStore } from "../../services/store/store";
 import { truncateAddress } from "../../utils/account/truncateAddress";
-import { getEthersSigner } from "../../utils/scaffold-eth/ethersSigner";
 import { ethers } from "ethers";
 import Blockies from "react-blockies";
 import { BiPlus } from "react-icons/bi";
@@ -21,6 +20,7 @@ import { useAccount, useWalletClient } from "wagmi";
 import { useBalance } from "wagmi";
 import { WalletIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import ethLogo from "~~/public/ethereum-eth-logo.svg";
+import { getEthersSigner } from "~~/utils/scaffold-eth/ethersSigner";
 
 const Dashboard = () => {
   const { NBACollectibles, isLoading } = useNBACollectible();
